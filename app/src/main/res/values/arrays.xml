@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lorem">
+        <item>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</item>
+        <item>Aliquam tincidunt mauris eu risus.</item>
+        <item>Vestibulum auctor dapibus neque.</item>
+        <item>Nunc dignissim risus id metus.</item>
+        <item>Cras ornare tristique elit.</item>
+        <item>Vivamus vestibulum ntulla nec ante.</item>
+        <item>Praesent placerat risus quis eros.</item>
+        <item>Fusce pellentesque suscipit nibh.</item>
+        <item>Integer vitae libero ac risus egestas placerat.</item>
+        <item>Vestibulum commodo felis quis tortor.</item>
+        <item>Ut aliquam sollicitudin leo.</item>
+        <item>Cras iaculis ultricies nulla.</item>
+        <item>Donec quis dui at dolor tempor interdum.</item>
+        <item>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat</item>
+        <item>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</item>
+        <item>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</item>
+        <item>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</item>
+        <item>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna.</item>
+        <item>Nulla sed leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</item>
+        <item>Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus.</item>
+        <item>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</item>
+        <item>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</item>
+    </string-array>
+
+</resources>
