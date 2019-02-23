@@ -64,7 +64,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
 
 
 
-    interface ActionHandler {
+    public interface ActionHandler {
         void onListItemClick(ListItem listItem);
     }
 }

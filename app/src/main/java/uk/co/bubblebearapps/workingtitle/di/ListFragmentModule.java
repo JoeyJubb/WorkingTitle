@@ -2,6 +2,7 @@ package uk.co.bubblebearapps.workingtitle.di;
 
 import dagger.Module;
 import dagger.Provides;
+import uk.co.bubblebearapps.workingtitle.list.ListAdapter;
 import uk.co.bubblebearapps.workingtitle.list.ListContract;
 import uk.co.bubblebearapps.workingtitle.list.ListFragment;
 import uk.co.bubblebearapps.workingtitle.list.ListModel;
@@ -26,7 +27,7 @@ class ListFragmentModule {
     }
 
     @Provides
-    static ListContract.ActionHandler provideListActionHandler(ListFragment listFragment) {
+    static ListAdapter.ActionHandler provideListActionHandler(ListFragment listFragment) {
         return listFragment;
     }
 }
