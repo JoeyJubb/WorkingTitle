@@ -6,25 +6,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.google.common.base.Optional;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.common.base.Optional;
 import dagger.android.support.AndroidSupportInjection;
 import uk.co.bubblebearapps.workingtitle.Navigator;
 import uk.co.bubblebearapps.workingtitle.R;
 import uk.co.bubblebearapps.workingtitle.base.BaseMvpFragment;
 import uk.co.bubblebearapps.workingtitle.list.ListContract.Presenter;
 import uk.co.bubblebearapps.workingtitle.util.Consumable;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
 
 /**
  */
@@ -96,7 +94,7 @@ public class ListFragment extends
     private void navigateToItemDetail(Consumable<String> title) {
         final Optional<String> consume = title.consume();
         if (consume.isPresent()) {
-            mNavigator.navigateToItemDetail(consume.get());
+            mNavigator.navigateToItemDetail();
         }
     }
 

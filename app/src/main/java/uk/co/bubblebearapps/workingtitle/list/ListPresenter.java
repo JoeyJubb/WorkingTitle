@@ -1,14 +1,13 @@
 package uk.co.bubblebearapps.workingtitle.list;
 
 import android.util.Log;
-
-import javax.inject.Inject;
-
 import androidx.annotation.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import uk.co.bubblebearapps.workingtitle.util.Consumable;
 import uk.co.bubblebearapps.workingtitle.util.RxUtils;
+
+import javax.inject.Inject;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -38,7 +37,6 @@ public class ListPresenter implements ListContract.Presenter {
     @Override
     public void loadList() {
         final Disposable subscribe = mModel.getList()
-                .compose(RxUtils.getIoSchedulerSingleComposition())
                 .compose(RxUtils.getLoadingIndicatorSingleComposition(mView))
                 .doOnSubscribe(disposable -> mView.setError(null))
                 .subscribe(mView::showList, mView::setError);
@@ -48,7 +46,6 @@ public class ListPresenter implements ListContract.Presenter {
     @Override
     public void showItemDetail(ListItem listItem) {
         final Disposable subscribe = mModel.doLongRunningOperation()
-                .compose(RxUtils.getIoSchedulerCompleteableComposition())
                 .compose(RxUtils.getLoadingIndicatorompleteableComposition(mView))
                 .doOnSubscribe(disposable -> mView.setError(null))
                 .subscribe(
