@@ -6,11 +6,12 @@ import io.reactivex.schedulers.Schedulers;
 import uk.co.bubblebearapps.workingtitle.base.UseCase;
 import uk.co.bubblebearapps.workingtitle.util.RxUtils;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class GetListUseCase implements UseCase<Single<List<String>>> {
+public class GetListUseCase implements UseCase<String, Single<List<String>>> {
 
     private static final List<String> DUMMY_DATA = Lists.newArrayList(
             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
@@ -33,7 +34,7 @@ public class GetListUseCase implements UseCase<Single<List<String>>> {
     }
 
     @Override
-    public Single<List<String>> get() {
+    public Single<List<String>> get(@Nullable String query) {
         return Single.just(DUMMY_DATA)
                 .delay(3, TimeUnit.SECONDS)
                 .doOnSubscribe(RxUtils.NOT_ON_MAIN_THREAD_CONSUMER)

@@ -27,8 +27,8 @@ public class ListModel implements ListContract.Model {
     }
 
     @Override
-    public Single<List<ListItem>> getList() {
-        return getListUseCase.get()
+    public Single<List<ListItem>> getList(@NonNull String query) {
+        return getListUseCase.get(query)
                 .observeOn(Schedulers.computation())
                 .map(ListMappingUtils.getListMapper(ListItem::new))
                 .observeOn(AndroidSchedulers.mainThread());

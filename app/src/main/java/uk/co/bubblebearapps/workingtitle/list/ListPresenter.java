@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import uk.co.bubblebearapps.workingtitle.di.qualifier.ListPresenterQuery;
 import uk.co.bubblebearapps.workingtitle.util.Consumable;
 import uk.co.bubblebearapps.workingtitle.util.RxUtils;
 
@@ -17,18 +18,23 @@ public class ListPresenter implements ListContract.Presenter {
 
     @NonNull private final ListContract.Model mModel;
     @NonNull private final ListContract.View mView;
+    @NonNull
+    private final String mQuery;
 
     @NonNull private final CompositeDisposable mCompositeDisposable;
 
     @Inject
     public ListPresenter(
             @NonNull ListContract.Model model,
-            @NonNull ListContract.View view) {
-
+            @NonNull ListContract.View view,
+            @NonNull @ListPresenterQuery String query
+    ) {
         Log.d(TAG, String.format("New instance: %s", this));
 
         mModel = checkNotNull(model);
-        mView = view;
+        mView = checkNotNull(view);
+        mQuery = checkNotNull(query);
+
         mCompositeDisposable = new CompositeDisposable();
 
         loadList();
@@ -36,7 +42,7 @@ public class ListPresenter implements ListContract.Presenter {
 
     @Override
     public void loadList() {
-        final Disposable subscribe = mModel.getList()
+        final Disposable subscribe = mModel.getList(mQuery)
                 .compose(RxUtils.getLoadingIndicatorSingleComposition(mView))
                 .doOnSubscribe(disposable -> mView.setError(null))
                 .subscribe(mView::showList, mView::setError);

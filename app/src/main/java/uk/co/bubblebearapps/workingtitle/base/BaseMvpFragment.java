@@ -1,13 +1,12 @@
 package uk.co.bubblebearapps.workingtitle.base;
 
 import android.os.Bundle;
-
-import javax.inject.Provider;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
+
+import javax.inject.Provider;
 
 /**
  */
@@ -48,6 +47,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter<V>, V extends Base
      * Use this method in case you want to specify a specific ID for the {@link PresenterLoader}. By
      * default its value would be {@link #LOADER_ID}.
      */
+    @SuppressWarnings("WeakerAccess")
     protected int loaderId() {
         return LOADER_ID;
     }
@@ -71,8 +71,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter<V>, V extends Base
     /**
      * Hook for subclasses before the screen gets destroyed.
      */
-    @SuppressWarnings("EmptyMethod")
-    protected void onPresenterDestroyed() {
+    private void onPresenterDestroyed() {
         presenter.onDestroyed();
     }
 }

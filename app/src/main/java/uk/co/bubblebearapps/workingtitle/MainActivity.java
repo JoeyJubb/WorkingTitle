@@ -10,12 +10,13 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import uk.co.bubblebearapps.workingtitle.list.ListFragment;
 
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector, Navigator {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    public static final String LIST_FRAGMENT_TAG = "LIST_FRAGMENT";
 
     @Inject DispatchingAndroidInjector<Fragment> mFragmentInjector;
 
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Fragment listFragment = getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT_TAG);
+        if (listFragment == null) {
+            listFragment = ListFragment.newInstance("query");
+            getSupportFragmentManager().beginTransaction().add(R.id.container, listFragment, "LIST_FRAGMENT").commitNow();
+        }
     }
 
     @Override

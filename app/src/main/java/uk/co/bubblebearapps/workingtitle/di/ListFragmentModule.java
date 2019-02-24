@@ -2,11 +2,8 @@ package uk.co.bubblebearapps.workingtitle.di;
 
 import dagger.Module;
 import dagger.Provides;
-import uk.co.bubblebearapps.workingtitle.list.ListAdapter;
-import uk.co.bubblebearapps.workingtitle.list.ListContract;
-import uk.co.bubblebearapps.workingtitle.list.ListFragment;
-import uk.co.bubblebearapps.workingtitle.list.ListModel;
-import uk.co.bubblebearapps.workingtitle.list.ListPresenter;
+import uk.co.bubblebearapps.workingtitle.di.qualifier.ListPresenterQuery;
+import uk.co.bubblebearapps.workingtitle.list.*;
 
 @Module
 class ListFragmentModule {
@@ -29,5 +26,11 @@ class ListFragmentModule {
     @Provides
     static ListAdapter.ActionHandler provideListActionHandler(ListFragment listFragment) {
         return listFragment;
+    }
+
+    @Provides
+    @ListPresenterQuery
+    static String provideListPresenterQuery(ListFragment listFragment) {
+        return listFragment.getQuery();
     }
 }

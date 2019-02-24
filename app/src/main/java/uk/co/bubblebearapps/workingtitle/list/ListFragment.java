@@ -24,12 +24,15 @@ import uk.co.bubblebearapps.workingtitle.util.Consumable;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  */
 public class ListFragment extends
         BaseMvpFragment<ListContract.Presenter, ListContract.View> implements ListAdapter.ActionHandler {
 
     private static final String TAG = ListFragment.class.getSimpleName();
+    private static final String ARG_QUERY = "ARG_QUERY";
 
     @Inject Navigator mNavigator;
     @Inject Provider<Presenter> mPresenterProvider;
@@ -40,6 +43,15 @@ public class ListFragment extends
 
     private ContentLoadingProgressBar mProgressBar;
     private Snackbar mSnackBar;
+
+    public static ListFragment newInstance(@NonNull String query) {
+        final Bundle args = new Bundle();
+        args.putString(ARG_QUERY, query);
+
+        final ListFragment listFragment = new ListFragment();
+        listFragment.setArguments(args);
+        return listFragment;
+    }
 
     public ListFragment() {
         Log.d(TAG, String.format("New instance: %s", this));
@@ -89,6 +101,10 @@ public class ListFragment extends
     protected void onPresenterPrepared(@NonNull Presenter presenter) {
         Log.d(TAG, String.format("onPresenterPrepared(%s)", presenter));
         mPresenter = presenter;
+    }
+
+    public String getQuery() {
+        return checkNotNull(getArguments()).getString(ARG_QUERY);
     }
 
     private void navigateToItemDetail(Consumable<String> title) {

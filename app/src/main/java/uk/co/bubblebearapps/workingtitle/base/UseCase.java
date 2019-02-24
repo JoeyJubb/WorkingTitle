@@ -1,7 +1,9 @@
 package uk.co.bubblebearapps.workingtitle.base;
 
-public interface UseCase<T> {
+import androidx.annotation.NonNull;
 
-    T get();
+public interface UseCase<P, T> {
+
+    T get(@NonNull P params);
 
 }
