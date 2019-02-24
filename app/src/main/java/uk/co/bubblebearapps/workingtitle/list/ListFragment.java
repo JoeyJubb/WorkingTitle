@@ -34,15 +34,22 @@ public class ListFragment extends
     private static final String TAG = ListFragment.class.getSimpleName();
     private static final String ARG_QUERY = "ARG_QUERY";
 
-    @Inject Navigator mNavigator;
-    @Inject Provider<Presenter> mPresenterProvider;
-    @Inject ListAdapter mListAdapter;
+    @Inject
+    Navigator mNavigator;
+    @Inject
+    Provider<Presenter> mPresenterProvider;
+    @Inject
+    ListAdapter mListAdapter;
 
     private ListViewModel mListViewModel;
     private Presenter mPresenter;
 
     private ContentLoadingProgressBar mProgressBar;
     private Snackbar mSnackBar;
+
+    public ListFragment() {
+        Log.d(TAG, String.format("New instance: %s", this));
+    }
 
     public static ListFragment newInstance(@NonNull String query) {
         final Bundle args = new Bundle();
@@ -51,10 +58,6 @@ public class ListFragment extends
         final ListFragment listFragment = new ListFragment();
         listFragment.setArguments(args);
         return listFragment;
-    }
-
-    public ListFragment() {
-        Log.d(TAG, String.format("New instance: %s", this));
     }
 
     @Override
@@ -66,7 +69,7 @@ public class ListFragment extends
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 

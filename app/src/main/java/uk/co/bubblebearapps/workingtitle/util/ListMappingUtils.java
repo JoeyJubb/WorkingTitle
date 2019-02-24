@@ -1,11 +1,11 @@
 package uk.co.bubblebearapps.workingtitle.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

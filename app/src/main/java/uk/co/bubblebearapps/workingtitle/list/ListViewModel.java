@@ -1,16 +1,15 @@
 package uk.co.bubblebearapps.workingtitle.list;
 
 import android.util.Log;
-
-import java.util.List;
-
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import uk.co.bubblebearapps.workingtitle.util.Consumable;
 
-public class ListViewModel extends ViewModel implements ListContract.View  {
+import java.util.List;
+
+public class ListViewModel extends ViewModel implements ListContract.View {
 
     private static final String TAG = ListViewModel.class.getSimpleName();
 
@@ -36,11 +35,6 @@ public class ListViewModel extends ViewModel implements ListContract.View  {
     }
 
     @Override
-    public void setError(@Nullable Throwable throwable) {
-        mError.setValue(throwable);
-    }
-
-    @Override
     public void clearAll() {
         onCleared();
     }
@@ -51,7 +45,9 @@ public class ListViewModel extends ViewModel implements ListContract.View  {
     }
 
     @Override
-    public void navigateToItemDetail(Consumable<String> title) { mItemDetailNav.setValue(title); }
+    public void navigateToItemDetail(Consumable<String> title) {
+        mItemDetailNav.setValue(title);
+    }
 
     public LiveData<Boolean> getShowLoadingIndicator() {
         return mShowLoadingIndicator;
@@ -63,6 +59,11 @@ public class ListViewModel extends ViewModel implements ListContract.View  {
 
     public LiveData<Throwable> getError() {
         return mError;
+    }
+
+    @Override
+    public void setError(@Nullable Throwable throwable) {
+        mError.setValue(throwable);
     }
 
     public LiveData<Consumable<String>> getItemDetailNav() {

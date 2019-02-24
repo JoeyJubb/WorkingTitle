@@ -16,12 +16,15 @@ public class ListPresenter implements ListContract.Presenter {
 
     private static final String TAG = ListPresenter.class.getSimpleName();
 
-    @NonNull private final ListContract.Model mModel;
-    @NonNull private final ListContract.View mView;
+    @NonNull
+    private final ListContract.Model mModel;
+    @NonNull
+    private final ListContract.View mView;
     @NonNull
     private final String mQuery;
 
-    @NonNull private final CompositeDisposable mCompositeDisposable;
+    @NonNull
+    private final CompositeDisposable mCompositeDisposable;
 
     @Inject
     public ListPresenter(

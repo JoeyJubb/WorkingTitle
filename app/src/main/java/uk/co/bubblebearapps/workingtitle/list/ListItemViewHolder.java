@@ -2,7 +2,6 @@ package uk.co.bubblebearapps.workingtitle.list;
 
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +11,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 class ListItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    @NonNull private final ListAdapter.ActionHandler mActionHandler;
-    @NonNull private final TextView mTextView;
+    @NonNull
+    private final ListAdapter.ActionHandler mActionHandler;
+    @NonNull
+    private final TextView mTextView;
 
-    @Nullable private ListItem mListItem;
+    @Nullable
+    private ListItem mListItem;
 
     public ListItemViewHolder(@NonNull View itemView, @NonNull ListAdapter.ActionHandler actionHandler) {
         super(itemView);

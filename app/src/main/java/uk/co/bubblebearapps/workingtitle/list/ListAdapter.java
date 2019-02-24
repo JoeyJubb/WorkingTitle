@@ -4,29 +4,30 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import uk.co.bubblebearapps.workingtitle.R;
 import uk.co.bubblebearapps.workingtitle.di.qualifier.ActivityContext;
 
+import javax.inject.Inject;
+import java.util.List;
+
 public class ListAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
 
     private static final String TAG = ListAdapter.class.getSimpleName();
 
-    @NonNull private final LayoutInflater mLayoutInflater;
-    @NonNull private final ActionHandler mActionHandler;
+    @NonNull
+    private final LayoutInflater mLayoutInflater;
+    @NonNull
+    private final ActionHandler mActionHandler;
 
-    @Nullable private List<ListItem> itemList;
+    @Nullable
+    private List<ListItem> itemList;
 
     @Inject
     public ListAdapter(@ActivityContext @NonNull Context context,
-            @NonNull ActionHandler actionHandler) {
+                       @NonNull ActionHandler actionHandler) {
 
         Log.d(TAG, String.format("New instance: %s", this));
         mLayoutInflater = LayoutInflater.from(context);
@@ -61,7 +62,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
         this.itemList = itemList;
         notifyDataSetChanged();
     }
-
 
 
     public interface ActionHandler {

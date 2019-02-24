@@ -1,8 +1,7 @@
 package uk.co.bubblebearapps.workingtitle.util;
 
-import com.google.common.base.Optional;
-
 import androidx.annotation.NonNull;
+import com.google.common.base.Optional;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

@@ -3,24 +3,25 @@ package uk.co.bubblebearapps.workingtitle.di;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
-import javax.inject.Singleton;
 import uk.co.bubblebearapps.workingtitle.Application;
+
+import javax.inject.Singleton;
 
 @Singleton
 @Component(modules = {
-    AndroidSupportInjectionModule.class,
-    AppModule.class,
-    MainActivityBuilderModule.class})
+        AndroidSupportInjectionModule.class,
+        AppModule.class,
+        MainActivityBuilderModule.class})
 public interface AppComponent {
 
-  @Component.Builder
-  interface Builder {
+    void inject(Application app);
 
-    @BindsInstance
-    Builder application(Application application);
+    @Component.Builder
+    interface Builder {
 
-    AppComponent build();
-  }
+        @BindsInstance
+        Builder application(Application application);
 
-  void inject(Application app);
+        AppComponent build();
+    }
 }

@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     public static final String LIST_FRAGMENT_TAG = "LIST_FRAGMENT";
 
-    @Inject DispatchingAndroidInjector<Fragment> mFragmentInjector;
+    @Inject
+    DispatchingAndroidInjector<Fragment> mFragmentInjector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

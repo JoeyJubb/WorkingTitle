@@ -1,11 +1,12 @@
 package uk.co.bubblebearapps.workingtitle.base;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.loader.content.Loader;
+
 import javax.inject.Provider;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 
 /**
@@ -16,46 +17,46 @@ import javax.inject.Provider;
  */
 public class PresenterLoader<T extends BasePresenter> extends Loader<T> {
 
-  private final Provider<T> mProvider;
-  private T mPresenter;
+    private final Provider<T> mProvider;
+    private T mPresenter;
 
-  /**
-   * @param context used to retrieve the application strategy.
-   * @param provider used to provide a mPresenter
-   */
-  public PresenterLoader(Context context, @NonNull Provider<T> provider) {
-    super(context);
-    this.mProvider = checkNotNull(provider);
-  }
-
-  // Constructor...
-
-  @Override
-  protected void onStartLoading() {
-
-    // If we already own an instance, simply deliver it.
-    if (mPresenter != null) {
-      deliverResult(mPresenter);
-      return;
+    /**
+     * @param context  used to retrieve the application strategy.
+     * @param provider used to provide a mPresenter
+     */
+    public PresenterLoader(Context context, @NonNull Provider<T> provider) {
+        super(context);
+        this.mProvider = checkNotNull(provider);
     }
 
-    // Otherwise, force a load
-    forceLoad();
-  }
+    // Constructor...
 
-  @Override
-  protected void onForceLoad() {
-    // Create the Presenter using the Provider
-    mPresenter = mProvider.get();
+    @Override
+    protected void onStartLoading() {
 
-    // Deliver the result
-    deliverResult(mPresenter);
-  }
+        // If we already own an instance, simply deliver it.
+        if (mPresenter != null) {
+            deliverResult(mPresenter);
+            return;
+        }
 
-  @Override
-  protected void onReset() {
-    mPresenter.onDestroyed();
-    mPresenter = null;
-  }
+        // Otherwise, force a load
+        forceLoad();
+    }
+
+    @Override
+    protected void onForceLoad() {
+        // Create the Presenter using the Provider
+        mPresenter = mProvider.get();
+
+        // Deliver the result
+        deliverResult(mPresenter);
+    }
+
+    @Override
+    protected void onReset() {
+        mPresenter.onDestroyed();
+        mPresenter = null;
+    }
 
 }
